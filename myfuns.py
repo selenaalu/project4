@@ -15,6 +15,7 @@ def get_recommended_movies(newuser):
     popularity_ranking = popularity[['MovieID', 'weighted_rating']].sort_values('weighted_rating', ascending=False)
     
     similarity_matrix = pd.read_csv('similarity_matrix.csv',index_col=0)
+    similarity_matrix = similarity_matrix.iloc[:100, :100]
     
     sim = similarity_matrix.fillna(0).values
     rated_movies = np.array([i for i in newuser.index if not np.isnan(newuser[i])])
