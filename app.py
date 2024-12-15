@@ -9,7 +9,9 @@ from dash.dependencies import ALL, State
 
 from myfuns import (get_displayed_movies, get_recommended_movies)
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP], 
+    suppress_callback_exceptions=True)
+server = app.server
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {
